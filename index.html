@@ -1,0 +1,1190 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light" data-lang="zh"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wu Hao · 吴昊</title>
+<meta name="description" content="Personal academic homepage of Wu Hao (吴昊)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600&amp;family=Noto+Serif+JP:wght@400;500;600&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:           #fbfaf7;            /* warm off-white paper */
+    --bg-soft:      #f4f2ec;
+    --ink:          #181715;
+    --ink-2:        #3a3833;
+    --ink-3:        #6a665e;
+    --ink-4:        #a39e93;
+    --rule:         #e8e4da;
+    --rule-2:       #d4cfc2;
+    --link:         #1f5dab;
+    --link-hover:   #143f7a;
+    --accent:       #1f5dab;
+    --accent-soft:  rgba(31,93,171,0.10);
+    --highlight:    #181715;
+    --highlight-fg: #fbfaf7;
+    --warm-tint:    rgba(186,140,90,0.06);
+
+    --sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --serif:   "Source Serif 4", "Iowan Old Style", Georgia, serif;
+    --serif-cn:"Noto Serif SC", "Songti SC", "STSong", serif;
+    --serif-jp:"Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  }
+
+  [data-theme="dark"] {
+    --bg:           #15140f;
+    --bg-soft:      #1d1c17;
+    --ink:          #ece8de;
+    --ink-2:        #c8c2b3;
+    --ink-3:        #8a8478;
+    --ink-4:        #5e594f;
+    --rule:         #2a2823;
+    --rule-2:       #3a382f;
+    --link:         #6fa3df;
+    --link-hover:   #9bc0ec;
+    --accent:       #6fa3df;
+    --accent-soft:  rgba(111,163,223,0.13);
+    --highlight:    #ece8de;
+    --highlight-fg: #15140f;
+    --warm-tint:    rgba(186,140,90,0.04);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bg);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background .3s ease, color .3s ease;
+    position: relative;
+  }
+  [data-lang="zh"] body { font-family: var(--serif-cn), var(--sans); }
+  [data-lang="jp"] body { font-family: var(--serif-jp), var(--sans); }
+
+  /* Subtle warm radial glow + paper grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(900px 600px at 90% -5%, var(--warm-tint), transparent 60%),
+      radial-gradient(700px 500px at -5% 40%, var(--accent-soft), transparent 65%);
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none;
+    opacity: 0.25;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  [data-theme="dark"] body::after { opacity: 0.15; mix-blend-mode: screen; }
+
+  ::selection { background: var(--ink); color: var(--bg); }
+
+  a { color: var(--link); text-decoration: none; transition: color .15s; }
+  a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 2.5px; text-decoration-thickness: 1px; }
+
+  /* ---------- Top nav ---------- */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s, background .25s;
+  }
+  .topnav.scrolled {
+    border-bottom-color: var(--rule);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+  }
+  .topnav-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 16px 32px;
+    display: flex; justify-content: center; align-items: center;
+    gap: 22px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .topnav a.nav-link {
+    color: var(--ink-2);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 0;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+  [data-lang="zh"] .topnav a.nav-link, [data-lang="jp"] .topnav a.nav-link {
+    font-weight: 500;
+  }
+  .topnav a.nav-link:hover { color: var(--ink); text-decoration: none; }
+  .topnav a.nav-link.active { color: var(--ink); }
+  .topnav a.nav-link.active::after {
+    content: ""; position: absolute;
+    left: 0; right: 0; bottom: -3px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--ink) 20%, var(--ink) 80%, transparent);
+    border-radius: 2px;
+  }
+  .nav-tools {
+    position: absolute; right: 24px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; gap: 4px;
+    align-items: center;
+  }
+  .lang-switch {
+    display: inline-flex;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 3px;
+    margin-right: 4px;
+  }
+  .lang-switch button {
+    background: transparent;
+    border: none;
+    color: var(--ink-3);
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    transition: all .2s;
+    letter-spacing: 0.02em;
+  }
+  .lang-switch button:hover { color: var(--ink); }
+  .lang-switch button.active {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .nav-tools .icon-btn {
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+    font: inherit; font-size: 12px;
+    display: grid; place-items: center;
+    transition: all .15s;
+  }
+  .nav-tools .icon-btn:hover { background: var(--bg-soft); color: var(--ink); }
+  .nav-tools svg { width: 14px; height: 14px; }
+  @media (max-width: 760px) {
+    .topnav-inner { padding: 12px 16px; gap: 14px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; }
+    .topnav-inner::-webkit-scrollbar { display: none; }
+    .nav-tools { position: static; transform: none; margin-left: auto; }
+  }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 32px 96px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 72px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 880px) { .layout { grid-template-columns: 1fr; gap: 36px; padding: 32px 20px 64px; } }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar {
+    position: sticky; top: 88px;
+    align-self: start;
+  }
+  @media (max-width: 880px) { .sidebar { position: static; display: grid; grid-template-columns: 140px 1fr; gap: 24px; align-items: center; } }
+
+  .avatar {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e6dec9 0%, #c4b496 50%, #a59679 100%);
+    overflow: hidden;
+    margin-bottom: 22px;
+    position: relative;
+    box-shadow:
+      0 1px 3px rgba(24,23,21,0.08),
+      0 8px 24px -8px rgba(24,23,21,0.18);
+    border: 3px solid var(--bg);
+    outline: 1px solid var(--rule);
+    transition: transform .3s ease;
+  }
+  .avatar:hover { transform: scale(1.02) rotate(-1deg); }
+  @media (max-width: 880px) { .avatar { width: 140px; height: 140px; margin-bottom: 0; } }
+  .avatar img {
+    width: 230%; height: 230%;
+    object-fit: cover;
+    object-position: 50% 35%;
+    display: block;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  .avatar .initial {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-family: var(--serif);
+    font-size: 76px;
+    font-weight: 500;
+    font-style: italic;
+    color: rgba(0,0,0,0.6);
+    letter-spacing: -0.02em;
+  }
+
+  .name {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 5px;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+  [data-lang="zh"] .name { font-family: var(--serif-cn); font-weight: 600; font-size: 26px; letter-spacing: 0.02em; }
+  [data-lang="jp"] .name { font-family: var(--serif-jp); font-weight: 600; font-size: 26px; letter-spacing: 0.02em; }
+  [data-lang="en"] .name .cn, [data-lang="en"] .name .jp { display: none; }
+  [data-lang="zh"] .name .en, [data-lang="zh"] .name .jp { display: none; }
+  [data-lang="jp"] .name .en, [data-lang="jp"] .name .cn { display: none; }
+  .name-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+  }
+  .affiliation {
+    font-size: 13.5px;
+    color: var(--ink-3);
+    margin-bottom: 18px;
+    line-height: 1.5;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .meta-list { list-style: none; padding: 0; margin: 0; }
+  .meta-list li {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    padding: 5px 0;
+    display: flex; align-items: center; gap: 10px;
+    transition: transform .2s, color .2s;
+  }
+  .meta-list li:hover { transform: translateX(2px); }
+  .meta-list li:hover a { color: var(--link); }
+  .meta-list li .ico {
+    width: 18px; flex-shrink: 0;
+    display: inline-flex; justify-content: center;
+    color: var(--ink-3);
+    transition: color .2s;
+  }
+  .meta-list li:hover .ico { color: var(--link); }
+  .meta-list li .ico svg { width: 15px; height: 15px; }
+  .meta-list li a { color: var(--ink-2); }
+  .meta-list li a:hover { color: var(--link); text-decoration: none; }
+
+  /* ---------- Content ---------- */
+  .content { min-width: 0; }
+  .content > section {
+    padding-bottom: 48px;
+    margin-bottom: 12px;
+    scroll-margin-top: 80px;
+    position: relative;
+  }
+  .content > section:not(:last-child) { border-bottom: 1px solid var(--rule); }
+
+  .sec-title {
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0 0 22px;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 12px;
+    letter-spacing: -0.01em;
+    position: relative;
+  }
+  .sec-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule) 0%, transparent 60%);
+    margin-left: 6px;
+    align-self: center;
+    transform: translateY(2px);
+  }
+  [data-lang="zh"] .sec-title { font-family: var(--serif-cn); font-weight: 600; font-size: 22px; letter-spacing: 0.02em; }
+  [data-lang="jp"] .sec-title { font-family: var(--serif-jp); font-weight: 600; font-size: 22px; letter-spacing: 0.02em; }
+  .sec-title .emoji {
+    font-size: 22px;
+    display: inline-block;
+    transform: translateY(-1px);
+    filter: saturate(1.1);
+  }
+
+  /* About */
+  .about-text {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--ink-2);
+    max-width: 64ch;
+  }
+  [data-lang="zh"] .about-text, [data-lang="jp"] .about-text { line-height: 1.95; }
+  .about-text p { margin: 0 0 12px; }
+  .about-text .highlight {
+    background: var(--highlight);
+    color: var(--highlight-fg);
+    padding: 1px 5px;
+    border-radius: 2px;
+    font-weight: 400;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .about-text strong { color: var(--ink); font-weight: 600; }
+  [data-lang="zh"] .about-text strong, [data-lang="jp"] .about-text strong { font-weight: 600; }
+
+  /* News list */
+  .bullet-list { list-style: none; padding: 0; margin: 0; }
+  .bullet-list li {
+    padding: 7px 0 7px 22px;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink-2);
+    position: relative;
+  }
+  [data-lang="zh"] .bullet-list li, [data-lang="jp"] .bullet-list li { line-height: 1.85; }
+  .bullet-list li::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 14px;
+    width: 5px; height: 5px;
+    background: var(--ink-4);
+    border-radius: 50%;
+    transition: background .2s, transform .2s;
+  }
+  .bullet-list li:hover::before { background: var(--accent); transform: scale(1.4); }
+  .bullet-list .date {
+    color: var(--ink-3);
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .bullet-list .ico-inline {
+    display: inline-block;
+    margin: 0 2px;
+    transform: translateY(-1px);
+  }
+
+  /* Publications */
+  .pub {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 26px;
+    padding: 22px 0;
+    align-items: start;
+    transition: transform .25s ease;
+  }
+  .pub:hover { transform: translateX(2px); }
+  .pub:not(:last-child) { border-bottom: 1px dashed var(--rule); }
+  @media (max-width: 720px) { .pub { grid-template-columns: 1fr; } }
+  .pub-fig {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: var(--bg-soft);
+    display: grid; place-items: center;
+    position: relative;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .pub:hover .pub-fig {
+    border-color: var(--rule-2);
+    box-shadow: 0 4px 16px -4px rgba(24,23,21,0.10);
+  }
+  .pub-fig .label {
+    position: absolute;
+    top: 7px; left: 8px;
+    background: var(--bg);
+    border: 1px solid var(--rule-2);
+    color: var(--ink-2);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .pub-fig svg { width: 88%; height: 88%; opacity: 0.92; }
+  .pub-fig img.pub-cover {
+    width: 92%; height: 92%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(24,23,21,0.10));
+  }
+  .pub-fig.fig-1 { background: linear-gradient(135deg, #e8eef9 0%, #c8d8ef 100%); }
+  .pub-fig.fig-2 { background: linear-gradient(135deg, #f1eae8 0%, #d9c5c0 100%); }
+  .pub-fig.fig-3 { background: linear-gradient(135deg, #ebf0e8 0%, #c8d8c2 100%); }
+  .pub-fig.fig-4 { background: linear-gradient(135deg, #f0ecdf 0%, #d9c9a8 100%); }
+  [data-theme="dark"] .pub-fig.fig-1 { background: linear-gradient(135deg, #1e2a3a 0%, #2c3e5a 100%); }
+  [data-theme="dark"] .pub-fig.fig-2 { background: linear-gradient(135deg, #2a1f23 0%, #3a2c33 100%); }
+  [data-theme="dark"] .pub-fig.fig-3 { background: linear-gradient(135deg, #1f2a20 0%, #2c3a2e 100%); }
+  [data-theme="dark"] .pub-fig.fig-4 { background: linear-gradient(135deg, #2a261e 0%, #3a3328 100%); }
+
+  /* Click-to-zoom on paper covers */
+  .pub-fig {
+    cursor: zoom-in;
+  }
+  .pub-fig::after {
+    content: "\2922"; /* zoom glyph */
+    position: absolute;
+    bottom: 7px; right: 8px;
+    width: 20px; height: 20px;
+    display: grid; place-items: center;
+    font-size: 13px;
+    color: var(--ink-2);
+    background: var(--bg);
+    border: 1px solid var(--rule-2);
+    border-radius: 3px;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity .18s ease, transform .18s ease;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .pub-fig:hover::after { opacity: 1; transform: translateY(0); }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(24,23,21,0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+    padding: 5vh 5vw;
+    opacity: 0;
+    transition: opacity .22s ease;
+  }
+  .lightbox.open { display: flex; opacity: 1; }
+  .lightbox-stage {
+    position: relative;
+    width: min(92vw, 1280px);
+    max-height: 90vh;
+    background: var(--bg);
+    border-radius: 8px;
+    border: 1px solid var(--rule-2);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transform: scale(0.96);
+    transition: transform .22s ease;
+  }
+  .lightbox.open .lightbox-stage { transform: scale(1); }
+  .lightbox-canvas {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: 16/9;
+    display: grid; place-items: center;
+    padding: 28px;
+    overflow: hidden;
+  }
+  .lightbox-canvas svg { width: 100%; height: 100%; }
+  .lightbox-canvas img { width: 100%; height: 100%; object-fit: contain; }
+  .lightbox-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    padding: 12px 18px;
+    border-top: 1px solid var(--rule);
+    background: var(--bg-soft);
+  }
+  .lightbox-caption {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .lightbox-caption strong { color: var(--ink); font-weight: 600; }
+  .lightbox-close {
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+    flex-shrink: 0;
+  }
+  .lightbox-close:hover { background: var(--rule); border-color: var(--ink-2); }
+  @media (max-width: 600px) {
+    .lightbox { padding: 3vh 3vw; }
+    .lightbox-canvas { padding: 14px; }
+  }
+
+  .pub-body h3 {
+    font-size: 15.5px;
+    font-weight: 600;
+    margin: 0 0 5px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  [data-lang="zh"] .pub-body h3, [data-lang="jp"] .pub-body h3 { line-height: 1.5; }
+  .pub-body .authors {
+    font-size: 14px;
+    color: var(--ink-2);
+    margin-bottom: 3px;
+  }
+  .pub-body .authors .me {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 1px;
+  }
+  .pub-body .note {
+    font-size: 12.5px;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+    font-style: italic;
+    font-family: var(--serif);
+  }
+  .pub-body .links { display: flex; flex-direction: column; gap: 4px; }
+  .pub-body .links a {
+    font-size: 13.5px;
+    display: inline-flex; align-items: center; gap: 7px;
+    width: fit-content;
+  }
+  .pub-body .links a .ico {
+    width: 18px; display: inline-flex; justify-content: center;
+  }
+
+  /* Reveal */
+  [data-reveal] { opacity: 0; transform: translateY(8px); transition: opacity .55s ease, transform .55s ease; }
+  [data-reveal].in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+    [data-reveal] { opacity: 1; transform: none; }
+  }
+
+  /* Footer */
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 22px 32px 40px;
+    text-align: center;
+    color: var(--ink-4);
+    font-size: 12px;
+    border-top: 1px solid var(--rule);
+    position: relative; z-index: 1;
+  }
+  footer .colofon {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+  }
+  footer a { color: var(--ink-3); }
+  footer a:hover { color: var(--link); }
+
+  /* Pre-JS language gating (prevents FOUC; JS overrides via element.style.display) */
+  [data-lang="en"] [lang="zh"], [data-lang="en"] [lang="jp"] { display: none; }
+  [data-lang="zh"] [lang="en"], [data-lang="zh"] [lang="jp"] { display: none; }
+  [data-lang="jp"] [lang="en"], [data-lang="jp"] [lang="zh"] { display: none; }
+</style>
+</head>
+<body>
+
+<header class="topnav" id="topnav">
+  <div class="topnav-inner">
+    <a href="#top" class="nav-link" data-section="top"><span lang="en">Home</span><span lang="zh">首页</span><span lang="jp">ホーム</span></a>
+    <a href="#about" class="nav-link active" data-section="about"><span lang="en">About</span><span lang="zh">关于我</span><span lang="jp">自己紹介</span></a>
+    <a href="#news" class="nav-link" data-section="news"><span lang="en">News</span><span lang="zh">消息</span><span lang="jp">お知らせ</span></a>
+    <a href="#publications" class="nav-link" data-section="publications"><span lang="en">Publications</span><span lang="zh">出版物</span><span lang="jp">論文</span></a>
+    <a href="#education" class="nav-link" data-section="education"><span lang="en">Education</span><span lang="zh">教育</span><span lang="jp">学歴</span></a>
+    <a href="#experience" class="nav-link" data-section="experience"><span lang="en">Experience</span><span lang="zh">实习</span><span lang="jp">経歴</span></a>
+    <a href="#awards" class="nav-link" data-section="awards"><span lang="en">Awards</span><span lang="zh">荣誉与奖项</span><span lang="jp">受賞</span></a>
+    <div class="nav-tools">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button data-lang-set="en" title="English">EN</button>
+        <button data-lang-set="zh" title="简体中文" class="active">中</button>
+        <button data-lang-set="jp" title="日本語">日</button>
+      </div>
+      <button class="icon-btn" id="themeToggle" title="Theme">
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"></path></svg>
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="layout" id="top">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="avatar"><img src="assets/avatar-v3.jpg" alt="Wu Hao" /></div>
+    <div>
+      <h1 class="name">
+        <span class="en">Wu Hao</span>
+        <span class="cn">吴昊</span>
+        <span class="jp">呉昊</span>
+      </h1>
+      <div class="name-sub">
+        <span lang="en">PhD Researcher</span>
+        <span lang="zh">Wu Hao · 博士生</span>
+        <span lang="jp">Wu Hao · 博士課程</span>
+      </div>
+      <div class="affiliation">
+        <span lang="en">Mathematical Modelling &amp; Algorithms Laboratory<br><a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener">University of Tsukuba</a></span>
+        <span lang="zh"><a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener">筑波大学</a><br>信息数理研究室（MMALab）</span>
+        <span lang="jp"><a href="https://www.mma.cs.tsukuba.ac.jp/" target="_blank" rel="noopener">筑波大学</a><br>情報数理研究室（MMALab）</span>
+      </div>
+      <ul class="meta-list">
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-7.5 8-13a8 8 0 0 0-16 0c0 5.5 8 13 8 13z"></path><circle cx="12" cy="9" r="3"></circle></svg></span>
+          <span lang="en">Tsukuba, Ibaraki, Japan</span><span lang="zh">日本 · 茨城县筑波市</span><span lang="jp">日本 · 茨城県つくば市</span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 7 9-7"></path></svg></span>
+          <a href="mailto:wuh28893@gmail.com"><span lang="en">Email</span><span lang="zh">电子邮件</span><span lang="jp">メール</span></a>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg></span>
+          <a href="https://www.linkedin.com/in/%E6%98%8A-%E5%90%B4-00706b30a" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12.1c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.4.1-3 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.7.1 3 .8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"></path></svg></span>
+          <a href="https://github.com/hbhggh" target="_blank" rel="noopener">Github</a>
+        </li>
+        <li>
+          <span class="ico" style="font-size: 14px;">🤗</span>
+          <a href="#" target="_blank" rel="noopener"><span lang="en">Hugging Face</span><span lang="zh">抱抱脸</span><span lang="jp">Hugging Face</span></a>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M3 9v6l9 5 9-5V9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span>
+          <a href="#" target="_blank" rel="noopener"><span lang="en">Google Scholar</span><span lang="zh">谷歌学术</span><span lang="jp">Google Scholar</span></a>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"></path></svg></span>
+          <a href="#" target="_blank" rel="noopener">ORCID</a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+
+    <!-- About -->
+    <section id="about" style="font-family: Georgia">
+      <h2 class="sec-title"><span class="emoji">👋</span> <span lang="en">About me</span><span lang="zh">关于我</span><span lang="jp">自己紹介</span></h2>
+      <div class="about-text in" data-reveal="">
+        <p lang="en">
+          Hi! <span class="ico-inline">😊</span> I'm <strong>Hao Wu</strong> (吴昊), a PhD student in Computer Science at the <a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener"><strong>Mathematical Modelling &amp; Algorithms Laboratory</strong></a> (MMALab), <strong>University of Tsukuba</strong>. My research interests lie in <strong>computer vision</strong>, <strong>deep learning</strong>, and <strong>mathematical modelling for visual perception</strong>, with a focus on <span class="highlight">small object detection on drones, multi-object tracking, and person re-identification.</span>
+        </p>
+        <p lang="en">
+          Before joining Tsukuba, I received my Master's degree from the School of Automation, Qingdao University, where I worked on motion-trend-enhanced drone detection (CycleGAN + YOLO-V5s) and pedestrian multi-object tracking (YOLOX + Re-ID + ByteTrack). <span class="highlight">I'm always open to research collaborations and academic exchange.</span> Feel free to reach out.
+        </p>
+
+        <p lang="zh">
+          您好！<span class="ico-inline">😊</span> 我叫<strong>吴昊</strong>（Hao Wu），目前在<strong>日本筑波大学</strong>信息数理研究室（<a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener">MMALab</a>）读计算机科学博士。我的研究兴趣集中于<strong>计算机视觉</strong>、<strong>深度学习</strong>以及<strong>面向视觉感知的数学建模</strong>，具体方向包括<span class="highlight">无人机视角下的小目标检测、多目标跟踪以及行人重识别。</span>
+        </p>
+        <p lang="zh">
+          赴日之前，我于青岛大学自动化学院获得硕士学位，并在无人机小目标检测与行人多目标跟踪方向发表了两篇第一作论文。<span class="highlight">欢迎交流与合作，不论是科研讨论还是跨文化交流。</span>如果您对我的研究感兴趣，请随时与我联系。
+        </p>
+
+        <p lang="jp">
+          こんにちは！<span class="ico-inline">😊</span> <strong>呉昊</strong>（Hao Wu）と申します。現在、<strong>筑波大学 システム情報工学研究科</strong>の<a href="https://www.mma.cs.tsukuba.ac.jp/" target="_blank" rel="noopener"><strong>情報数理研究室（MMALab）</strong></a>の博士課程に在籍し、<strong>コンピュータビジョン</strong>、<strong>深層学習</strong>、そして<strong>視覚認識のための数理モデリング</strong>を研究しています。主なテーマは<span class="highlight">ドローン視点の小物体検出、マルチオブジェクトトラッキング、歩行者再識別</span>です。
+        </p>
+        <p lang="jp">
+          以前は青島大学 自動化学院で修士号を取得し、CycleGAN と YOLO-V5s を組み合わせた小物体検出、および YOLOX に Re-ID 分岐を追加し ByteTrack を改良した歩行者追跡手法を発表しました。<span class="highlight">研究交流や共同研究、そして日中間の学術交流にも常に心を開いています。</span>お気軽にご連絡ください。
+        </p>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section id="news">
+      <h2 class="sec-title"><span class="emoji">🔥</span> <span lang="en">News</span><span lang="zh">新闻</span><span lang="jp">お知らせ</span></h2>
+      <ul class="bullet-list in" data-reveal="">
+        <li>
+          <span class="date">2026.05 ·</span> <span class="ico-inline">🌐</span>
+          <span lang="en"> Personal academic homepage launched at <a href="https://hbhggh.github.io">hbhggh.github.io</a>. Will keep updating with research progress and notes.</span>
+          <span lang="zh"> 个人学术主页 <a href="https://hbhggh.github.io">hbhggh.github.io</a> 上线，后续将持续更新研究进展与笔记。</span>
+          <span lang="jp"> 個人ウェブサイト <a href="https://hbhggh.github.io">hbhggh.github.io</a> を公開しました。今後も研究の進捗や記録を更新していきます。</span>
+        </li>
+        <li>
+          <span class="date">2025.04 ·</span> <span class="ico-inline">✈️</span>
+          <span lang="en"> Started my PhD at the <a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener"><strong>Mathematical Modelling &amp; Algorithms Laboratory</strong></a>, University of Tsukuba. Excited to begin a new chapter in Japan!</span>
+          <span lang="zh"> 开始在<a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener"><strong>筑波大学 信息数理研究室（MMALab）</strong></a>读计算机科学博士，期待在日本开启新的科研旅程！</span>
+          <span lang="jp"> <a href="https://www.mma.cs.tsukuba.ac.jp/" target="_blank" rel="noopener"><strong>筑波大学 情報数理研究室（MMALab）</strong></a>にて博士課程を開始しました。日本での新しい研究生活を楽しみにしています！</span>
+        </li>
+        <li>
+          <span class="date">2023.03 ·</span> <span class="ico-inline">📄</span>
+          <span lang="en"> Published <a href="https://oversea.cnki.net/kcms2/article/abstract?v=CIt6vfrkg6B8VTqZ0wFMuP-od6ozqXGibx6YN9iL-t25iz2Ta9bf6JOTITHWH-3b1oZHmF02ZA4Z5IG95ycYaH7Xw1FhYB4X_W97BzXVM83ZYApuDR86l482vBdJ9qYjDf9Bv7bc5WS_s30xnUq0gdI65E-SwBFjRVS4An1Ago2_2YSPIPStDA==&amp;uniplatform=OVERSEA&amp;language=EN" target="_blank" rel="noopener"><strong>“Pedestrian multi-target tracking method based on YOLOX and person re-identification”</strong></a> (first author) in <em>Automation &amp; Instrumentation</em>, 2023, 38(03). Improves MOT17 mAP by 2.6% to 95.4% over ByteTrack.</span>
+          <span lang="zh"> 以第一作者在《自动化与仪表》 2023, 38(03) 发表论文<a href="https://oversea.cnki.net/kcms2/article/abstract?v=CIt6vfrkg6B8VTqZ0wFMuP-od6ozqXGibx6YN9iL-t25iz2Ta9bf6JOTITHWH-3b1oZHmF02ZA4Z5IG95ycYaH7Xw1FhYB4X_W97BzXVM83ZYApuDR86l482vBdJ9qYjDf9Bv7bc5WS_s30xnUq0gdI65E-SwBFjRVS4An1Ago2_2YSPIPStDA==&amp;uniplatform=OVERSEA&amp;language=EN" target="_blank" rel="noopener"><strong>《基于 YOLOX 和重识别的行人多目标跟踪方法》</strong></a>，在 MOT17 上 mAP 较 ByteTrack 提升 2.6%，达到 95.4%。</span>
+          <span lang="jp"> 第一著者として『自動化与仪表』 2023, 38(03) に論文<a href="https://oversea.cnki.net/kcms2/article/abstract?v=CIt6vfrkg6B8VTqZ0wFMuP-od6ozqXGibx6YN9iL-t25iz2Ta9bf6JOTITHWH-3b1oZHmF02ZA4Z5IG95ycYaH7Xw1FhYB4X_W97BzXVM83ZYApuDR86l482vBdJ9qYjDf9Bv7bc5WS_s30xnUq0gdI65E-SwBFjRVS4An1Ago2_2YSPIPStDA==&amp;uniplatform=OVERSEA&amp;language=EN" target="_blank" rel="noopener"><strong>「YOLOX と再識別に基づく歩行者マルチオブジェクト追跡手法」</strong></a>を発表。MOT17 にて mAP を ByteTrack 比 2.6% 向上の 95.4% を達成。</span>
+        </li>
+        <li>
+          <span class="date">2023.04 ·</span> <span class="ico-inline">🎙️</span>
+          <span lang="en"> Presented <a href="https://ieeexplore.ieee.org/document/10201284" target="_blank" rel="noopener"><strong>“Research on Motion Trend Enhanced 2D Detection on Drones”</strong></a> at <em>CCAI 2023 (IEEE)</em>. Proposed the Collaborative Filtering Mechanism (CFM) combining CycleGAN and YOLO-V5s for small object detection on the VisDrone dataset.</span>
+          <span lang="zh"> 在 <em>CCAI 2023 (IEEE)</em> 报告论文<a href="https://ieeexplore.ieee.org/document/10201284" target="_blank" rel="noopener"><strong>“Research on Motion Trend Enhanced 2D Detection on Drones”</strong></a>，提出基于 CycleGAN 与 YOLO-V5s 的协同过滤机制（CFM），用于 VisDrone 数据集上的小目标检测。</span>
+          <span lang="jp"> <em>CCAI 2023 (IEEE)</em> にて論文<a href="https://ieeexplore.ieee.org/document/10201284" target="_blank" rel="noopener"><strong>“Research on Motion Trend Enhanced 2D Detection on Drones”</strong></a>を発表。CycleGAN と YOLO-V5s を組み合わせた Collaborative Filtering Mechanism (CFM) を提案し、VisDrone データセットでの小物体検出を改善。</span>
+        </li>
+        <li>
+          <span class="date">2021.09 ·</span> <span class="ico-inline">🎓</span>
+          <span lang="en"> Started my Master's program at the School of Automation, Qingdao University, working on multi-object tracking under the National Key R&amp;D Project (No. 2020YFB1313604).</span>
+          <span lang="zh"> 在青岛大学自动化学院开始硕士研究生学习，研究方向为多目标跟踪，受国家重点研发项目（2020YFB1313604）资助。</span>
+          <span lang="jp"> 青島大学 自動化学院の修士課程に入学。マルチオブジェクトトラッキングを研究テーマとし、国家重点研究開発プロジェクト（2020YFB1313604）の支援を受ける。</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2 class="sec-title"><span class="emoji">📑</span> <span lang="en">Preprints &amp; Publications</span><span lang="zh">预印本和出版物</span><span lang="jp">論文・プレプリント</span></h2>
+
+      <div class="pub in" data-reveal="">
+        <div class="pub-fig fig-2">
+          <span class="label">Journal · 2023</span>
+          <svg viewBox="0 0 100 56" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+            <!-- ReID-centric pipeline: YOLOX detection (t & t+1) → ReID embeddings → cosine-similarity matching -->
+            <!-- top tags -->
+            <text x="3" y="6.2" font-size="2.6" stroke="none" fill="rgba(0,0,0,0.55)" font-family="ui-monospace,monospace" letter-spacing="0.05em">YOLOX · Frame t</text>
+            <text x="59" y="6.2" font-size="2.6" stroke="none" fill="rgba(0,0,0,0.55)" font-family="ui-monospace,monospace" letter-spacing="0.05em">YOLOX · Frame t+1</text>
+
+            <!-- Frame t -->
+            <rect x="2" y="8" width="38" height="22" rx="1" stroke-width="0.5" stroke-dasharray="1.2 1" opacity="0.55"></rect>
+            <g stroke-width="0.85">
+              <g>
+                <circle cx="9" cy="13.5" r="1.3"></circle>
+                <path d="M9 14.8 v5.5 M7 16.5 l2 -1.4 l2 1.4 M8 25 l1 -4 l1 4"></path>
+                <rect x="6" y="11.6" width="6" height="14" rx="0.5" stroke="#c2392f" stroke-width="0.9"></rect>
+                <text x="6" y="10.6" font-size="2.3" stroke="none" fill="#c2392f" font-weight="700" font-family="ui-monospace,monospace">ID 1</text>
+              </g>
+              <g>
+                <circle cx="20" cy="14.5" r="1.3"></circle>
+                <path d="M20 15.8 v5.5 M18 17.5 l2 -1.4 l2 1.4 M19 26 l1 -4 l1 4"></path>
+                <rect x="17" y="12.6" width="6" height="14" rx="0.5" stroke="#1f6dc4" stroke-width="0.9"></rect>
+                <text x="17" y="11.6" font-size="2.3" stroke="none" fill="#1f6dc4" font-weight="700" font-family="ui-monospace,monospace">ID 2</text>
+              </g>
+              <g>
+                <circle cx="32" cy="14" r="1.3"></circle>
+                <path d="M32 15.3 v5.5 M30 17 l2 -1.4 l2 1.4 M31 25.5 l1 -4 l1 4"></path>
+                <rect x="29" y="12.1" width="6" height="14" rx="0.5" stroke="#3f8a3a" stroke-width="0.9"></rect>
+                <text x="29" y="11.1" font-size="2.3" stroke="none" fill="#3f8a3a" font-weight="700" font-family="ui-monospace,monospace">ID 3</text>
+              </g>
+            </g>
+
+            <!-- Frame t+1 -->
+            <rect x="59" y="8" width="38" height="22" rx="1" stroke-width="0.5" stroke-dasharray="1.2 1" opacity="0.55"></rect>
+            <g stroke-width="0.85">
+              <g>
+                <circle cx="66" cy="14" r="1.3"></circle>
+                <path d="M66 15.3 v5.5 M64 17 l2 -1.4 l2 1.4 M65 25.5 l1 -4 l1 4"></path>
+                <rect x="63" y="12.1" width="6" height="14" rx="0.5" stroke="#c2392f" stroke-width="0.9"></rect>
+                <text x="63" y="11.1" font-size="2.3" stroke="none" fill="#c2392f" font-weight="700" font-family="ui-monospace,monospace">ID 1</text>
+              </g>
+              <g>
+                <circle cx="78" cy="13.5" r="1.3"></circle>
+                <path d="M78 14.8 v5.5 M76 16.5 l2 -1.4 l2 1.4 M77 25 l1 -4 l1 4"></path>
+                <rect x="75" y="11.6" width="6" height="14" rx="0.5" stroke="#1f6dc4" stroke-width="0.9"></rect>
+                <text x="75" y="10.6" font-size="2.3" stroke="none" fill="#1f6dc4" font-weight="700" font-family="ui-monospace,monospace">ID 2</text>
+              </g>
+              <g>
+                <circle cx="90" cy="14.5" r="1.3"></circle>
+                <path d="M90 15.8 v5.5 M88 17.5 l2 -1.4 l2 1.4 M89 26 l1 -4 l1 4"></path>
+                <rect x="87" y="12.6" width="6" height="14" rx="0.5" stroke="#3f8a3a" stroke-width="0.9"></rect>
+                <text x="87" y="11.6" font-size="2.3" stroke="none" fill="#3f8a3a" font-weight="700" font-family="ui-monospace,monospace">ID 3</text>
+              </g>
+            </g>
+
+            <!-- "Re-ID embedding" header -->
+            <text x="36" y="35.6" font-size="2.7" stroke="none" fill="rgba(0,0,0,0.7)" font-family="ui-monospace,monospace" font-weight="700" letter-spacing="0.1em">Re-ID embedding</text>
+
+            <!-- Drop lines: detection box → embedding -->
+            <g stroke-dasharray="0.8 0.7" stroke-width="0.4" opacity="0.55">
+              <path d="M9 25.7 v12" stroke="#c2392f"></path>
+              <path d="M20 26.7 v11" stroke="#1f6dc4"></path>
+              <path d="M32 26.2 v11.5" stroke="#3f8a3a"></path>
+              <path d="M66 26.2 v11.5" stroke="#c2392f"></path>
+              <path d="M78 25.7 v12" stroke="#1f6dc4"></path>
+              <path d="M90 26.7 v11" stroke="#3f8a3a"></path>
+            </g>
+
+            <!-- Embedding feature vectors (left = frame t, right = frame t+1) -->
+            <g stroke="none">
+              <g transform="translate(4 38)">
+                <rect width="1.4" height="3" fill="#c2392f"></rect>
+                <rect x="1.8" width="1.4" height="3" fill="#c2392f" opacity="0.45"></rect>
+                <rect x="3.6" width="1.4" height="3" fill="#c2392f" opacity="0.8"></rect>
+                <rect x="5.4" width="1.4" height="3" fill="#c2392f" opacity="0.3"></rect>
+                <rect x="7.2" width="1.4" height="3" fill="#c2392f" opacity="0.65"></rect>
+              </g>
+              <g transform="translate(15 38)">
+                <rect width="1.4" height="3" fill="#1f6dc4" opacity="0.55"></rect>
+                <rect x="1.8" width="1.4" height="3" fill="#1f6dc4"></rect>
+                <rect x="3.6" width="1.4" height="3" fill="#1f6dc4" opacity="0.35"></rect>
+                <rect x="5.4" width="1.4" height="3" fill="#1f6dc4" opacity="0.9"></rect>
+                <rect x="7.2" width="1.4" height="3" fill="#1f6dc4" opacity="0.5"></rect>
+              </g>
+              <g transform="translate(26 38)">
+                <rect width="1.4" height="3" fill="#3f8a3a" opacity="0.7"></rect>
+                <rect x="1.8" width="1.4" height="3" fill="#3f8a3a" opacity="0.4"></rect>
+                <rect x="3.6" width="1.4" height="3" fill="#3f8a3a"></rect>
+                <rect x="5.4" width="1.4" height="3" fill="#3f8a3a" opacity="0.55"></rect>
+                <rect x="7.2" width="1.4" height="3" fill="#3f8a3a" opacity="0.8"></rect>
+              </g>
+
+              <g transform="translate(61 38)">
+                <rect width="1.4" height="3" fill="#c2392f" opacity="0.95"></rect>
+                <rect x="1.8" width="1.4" height="3" fill="#c2392f" opacity="0.5"></rect>
+                <rect x="3.6" width="1.4" height="3" fill="#c2392f" opacity="0.78"></rect>
+                <rect x="5.4" width="1.4" height="3" fill="#c2392f" opacity="0.32"></rect>
+                <rect x="7.2" width="1.4" height="3" fill="#c2392f" opacity="0.62"></rect>
+              </g>
+              <g transform="translate(73 38)">
+                <rect width="1.4" height="3" fill="#1f6dc4" opacity="0.5"></rect>
+                <rect x="1.8" width="1.4" height="3" fill="#1f6dc4" opacity="0.95"></rect>
+                <rect x="3.6" width="1.4" height="3" fill="#1f6dc4" opacity="0.4"></rect>
+                <rect x="5.4" width="1.4" height="3" fill="#1f6dc4" opacity="0.85"></rect>
+                <rect x="7.2" width="1.4" height="3" fill="#1f6dc4" opacity="0.55"></rect>
+              </g>
+              <g transform="translate(85 38)">
+                <rect width="1.4" height="3" fill="#3f8a3a" opacity="0.65"></rect>
+                <rect x="1.8" width="1.4" height="3" fill="#3f8a3a" opacity="0.45"></rect>
+                <rect x="3.6" width="1.4" height="3" fill="#3f8a3a" opacity="0.95"></rect>
+                <rect x="5.4" width="1.4" height="3" fill="#3f8a3a" opacity="0.6"></rect>
+                <rect x="7.2" width="1.4" height="3" fill="#3f8a3a" opacity="0.78"></rect>
+              </g>
+            </g>
+
+            <!-- Cosine-similarity matching arcs across frames -->
+            <g stroke-width="0.6" stroke-dasharray="1.3 0.9">
+              <path d="M13 41 Q38 50 65 41" stroke="#c2392f" opacity="0.9"></path>
+              <path d="M24 41 Q50 51 77 41" stroke="#1f6dc4" opacity="0.9"></path>
+              <path d="M35 41 Q60 50 89 41" stroke="#3f8a3a" opacity="0.9"></path>
+            </g>
+
+            <!-- arrow tips landing on right embeddings -->
+            <g stroke="none">
+              <path d="M62 41 l-2.4 -0.6 l0.8 1.7 z" fill="#c2392f" opacity="0.9"></path>
+              <path d="M73.5 41 l-2.4 -0.6 l0.8 1.7 z" fill="#1f6dc4" opacity="0.9"></path>
+              <path d="M85.5 41 l-2.4 -0.6 l0.8 1.7 z" fill="#3f8a3a" opacity="0.9"></path>
+            </g>
+
+            <!-- cosine-sim badge in the middle -->
+            <g>
+              <rect x="42" y="48.5" width="16" height="5.5" rx="1" stroke="rgba(0,0,0,0.4)" stroke-width="0.45" fill="rgba(0,0,0,0.04)"></rect>
+              <text x="44" y="52.6" font-size="2.7" stroke="none" fill="rgba(0,0,0,0.7)" font-family="ui-monospace,monospace" font-weight="700" letter-spacing="0.05em">cos&#160;sim</text>
+            </g>
+
+          </svg>
+        </div>
+        <div class="pub-body">
+          <h3 lang="en">Pedestrian multi-target tracking method based on YOLOX and person re-identification</h3>
+          <h3 lang="zh">基于 YOLOX 和重识别的行人多目标跟踪方法</h3>
+          <h3 lang="jp">YOLOX と歩行者再識別に基づくマルチオブジェクト追跡手法</h3>
+          <p class="authors"><span class="me">Hao Wu</span> <span lang="en">(first author)</span><span lang="zh">（第一作者）</span><span lang="jp">（第一著者）</span></p>
+          <p class="note"><span lang="en">Automation &amp; Instrumentation (自动化与仪表), 2023, 38(03): 59-62+67. School of Automation, Qingdao University. Improves MOT17 mAP by 2.6% (→ 95.4%) over ByteTrack while preserving real-time speed.</span><span lang="zh">《自动化与仪表》, 2023, 38(03): 59-62+67. 青岛大学自动化学院. 在 MOT17 数据集上 mAP 较 ByteTrack 提升 2.6%，达到 95.4%，且保持实时性能。</span><span lang="jp">『自動化与仪表』, 2023, 38(03): 59-62+67. 青島大学 自動化学院. MOT17 にて mAP を ByteTrack 比 2.6% 向上の 95.4% を達成し、リアルタイム性も維持。</span></p>
+          <div class="links">
+            <a href="https://oversea.cnki.net/kcms2/article/abstract?v=CIt6vfrkg6B8VTqZ0wFMuP-od6ozqXGibx6YN9iL-t25iz2Ta9bf6JOTITHWH-3b1oZHmF02ZA4Z5IG95ycYaH7Xw1FhYB4X_W97BzXVM83ZYApuDR86l482vBdJ9qYjDf9Bv7bc5WS_s30xnUq0gdI65E-SwBFjRVS4An1Ago2_2YSPIPStDA==&amp;uniplatform=OVERSEA&amp;language=EN" target="_blank" rel="noopener"><span class="ico">🔗</span> CNKI</a>
+            <a href="#"><span class="ico">📚</span> BibTeX</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub in" data-reveal="">
+        <div class="pub-fig fig-1">
+          <span class="label">Conference · 2023</span>
+          <svg viewBox="0 0 100 56" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Drone (top-left) -->
+            <g stroke-width="0.85">
+              <line x1="10" y1="6" x2="22" y2="14"></line>
+              <line x1="22" y1="6" x2="10" y2="14"></line>
+              <ellipse cx="10" cy="6" rx="3" ry="1" fill="rgba(0,0,0,0.08)"></ellipse>
+              <ellipse cx="22" cy="6" rx="3" ry="1" fill="rgba(0,0,0,0.08)"></ellipse>
+              <ellipse cx="10" cy="14" rx="3" ry="1" fill="rgba(0,0,0,0.08)"></ellipse>
+              <ellipse cx="22" cy="14" rx="3" ry="1" fill="rgba(0,0,0,0.08)"></ellipse>
+              <rect x="13" y="8" width="6" height="4" rx="0.8" fill="rgba(0,0,0,0.18)"></rect>
+            </g>
+            <!-- Field-of-view cone -->
+            <path d="M14 12 L40 50 M18 12 L82 50" stroke-dasharray="1.4 1.2" opacity="0.55"></path>
+            <path d="M14 12 L40 50 L82 50 L18 12 Z" fill="rgba(31,109,196,0.06)" stroke="none"></path>
+            <!-- Ground horizon -->
+            <path d="M40 50 L82 50" opacity="0.4"></path>
+            <!-- target 1: car -->
+            <g>
+              <rect x="45" y="34" width="5" height="3" rx="0.5" fill="rgba(0,0,0,0.35)" stroke="none"></rect>
+              <rect x="43" y="32" width="9" height="7" rx="0.6" stroke="#c2392f" stroke-width="0.9"></rect>
+              <path d="M52 36 l8 -2" stroke="#c2392f" stroke-width="0.8"></path>
+              <path d="M60 34 l-2 -0.5 l0.5 1.8 z" fill="#c2392f" stroke="none"></path>
+            </g>
+            <!-- target 2: car -->
+            <g>
+              <rect x="60" y="42" width="4" height="2.5" rx="0.4" fill="rgba(0,0,0,0.35)" stroke="none"></rect>
+              <rect x="58" y="40" width="8" height="6" rx="0.6" stroke="#1f6dc4" stroke-width="0.9"></rect>
+              <path d="M58 44 l-7 1" stroke="#1f6dc4" stroke-width="0.8"></path>
+              <path d="M51 45 l2 -0.6 l-0.4 1.8 z" fill="#1f6dc4" stroke="none"></path>
+            </g>
+            <!-- target 3: pedestrian -->
+            <g>
+              <circle cx="73" cy="35" r="0.7" fill="rgba(0,0,0,0.4)" stroke="none"></circle>
+              <rect x="71.5" y="34" width="3" height="4.5" rx="0.4" stroke="#3f8a3a" stroke-width="0.9"></rect>
+              <path d="M74.5 36 l4 1" stroke="#3f8a3a" stroke-width="0.8"></path>
+              <path d="M78.5 37 l-1.6 -0.9 l-0.1 1.7 z" fill="#3f8a3a" stroke="none"></path>
+            </g>
+            <!-- CFM badge -->
+            <g transform="translate(82 8)">
+              <rect x="0" y="0" width="16" height="10" rx="1.2" stroke="rgba(0,0,0,0.45)" stroke-width="0.55"></rect>
+              <path d="M2 5 q3 -3 6 0 q3 3 6 0" stroke="rgba(0,0,0,0.55)" stroke-width="0.6"></path>
+              <text x="3" y="8.5" font-size="2.4" stroke="none" fill="rgba(0,0,0,0.6)" font-family="ui-monospace,monospace" font-weight="700">CFM</text>
+            </g>
+          </svg>
+        </div>
+        <div class="pub-body">
+          <h3 lang="en">Research on Motion Trend Enhanced 2D Detection on Drones</h3>
+          <h3 lang="zh">基于运动趋势增强的无人机二维目标检测研究</h3>
+          <h3 lang="jp">運動傾向強化に基づくドローン上の2D物体検出研究</h3>
+          <p class="authors"><span class="me">Hao Wu</span> <span lang="en">(first author)</span><span lang="zh">（第一作者）</span><span lang="jp">（第一著者）</span></p>
+          <p class="note"><span lang="en">School of Automation, Qingdao University, 2023. Proposes the Collaborative Filtering Mechanism (CFM): a CycleGAN-based image translation that enhances small-object features and filters irrelevant ones inside the YOLO-V5s feature cascade. Validated on the VisDrone dataset. Supported by the National Key R&amp;D Project (2020YFB1313604).</span><span lang="zh">青岛大学自动化学院, 2023. 提出协同过滤机制（CFM）：通过基于 CycleGAN 的图像转换增强小目标特征，并在 YOLO-V5s 特征级联中过滤无关信息，于 VisDrone 数据集验证有效性。受国家重点研发项目（2020YFB1313604）资助。</span><span lang="jp">青島大学 自動化学院, 2023. CycleGAN による画像変換を用いて小物体特徴を強化し、YOLO-V5s の特徴抽出カスケード内で不要な特徴を除去する Collaborative Filtering Mechanism (CFM) を提案。VisDrone データセットで有効性を検証。国家重点研究開発プロジェクト（2020YFB1313604）の支援を受ける。</span></p>
+          <div class="links">
+            <a href="https://ieeexplore.ieee.org/document/10201284" target="_blank" rel="noopener"><span class="ico">🔗</span> IEEE Xplore</a>
+            <a href="#"><span class="ico">📚</span> BibTeX</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2 class="sec-title"><span class="emoji">🎓</span> <span lang="en">Education</span><span lang="zh">教育</span><span lang="jp">学歴</span></h2>
+      <ul class="bullet-list in" data-reveal="">
+        <li>
+          <span class="date">2025.04 — present ·</span>
+          <span lang="en"> PhD student in Computer Science, <strong><a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener">Mathematical Modelling &amp; Algorithms Laboratory</a>, University of Tsukuba</strong>, Japan.</span>
+          <span lang="zh"> <strong><a href="https://www.mma.cs.tsukuba.ac.jp/?lang=en" target="_blank" rel="noopener">日本筑波大学 信息数理研究室（MMALab）</a></strong>计算机科学博士研究生。</span>
+          <span lang="jp"> <strong><a href="https://www.mma.cs.tsukuba.ac.jp/" target="_blank" rel="noopener">筑波大学 情報数理研究室（MMALab）</a></strong>にてコンピュータサイエンス博士課程在籍。</span>
+        </li>
+        <li>
+          <span class="date">2021.09 — 2024.06 ·</span>
+          <span lang="en"> M.Eng. in Electronic Information, <strong>School of Automation, <a href="https://www.qdu.edu.cn/" target="_blank" rel="noopener">Qingdao University</a></strong>. Joint training at the <a href="https://iff.qdu.edu.cn/" target="_blank" rel="noopener"><strong>Institute for Future</strong></a>, advised by <a href="https://iff.qdu.edu.cn/" target="_blank" rel="noopener">Prof. Shuzhi Sam Ge</a>. GPA: 86.92/100. Research: multi-object tracking, person re-identification, small object detection.</span>
+          <span lang="zh"> <strong><a href="https://www.qdu.edu.cn/" target="_blank" rel="noopener">青岛大学</a> 自动化学院</strong>，电子信息硕士研究生。师从<a href="https://iff.qdu.edu.cn/" target="_blank" rel="noopener">未来研究院</a><a href="https://iff.qdu.edu.cn/" target="_blank" rel="noopener">葛树志教授</a>，联合培养。GPA：86.92/100。研究方向：多目标跟踪、行人重识别、小目标检测。</span>
+          <span lang="jp"> <strong><a href="https://www.qdu.edu.cn/" target="_blank" rel="noopener">青島大学</a> 自動化学院</strong>、電子情報修士課程修了。<a href="https://iff.qdu.edu.cn/" target="_blank" rel="noopener">未来研究院</a>にて<a href="https://iff.qdu.edu.cn/" target="_blank" rel="noopener">葛樹志教授</a>のご指導のもと共同研究。GPA：86.92/100。研究テーマ：マルチオブジェクトトラッキング、歩行者再識別、小物体検出。</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="sec-title"><span class="emoji">💼</span> <span lang="en">Experience</span><span lang="zh">实习机会</span><span lang="jp">経歴・インターンシップ</span></h2>
+      <ul class="bullet-list in" data-reveal="">
+        <li>
+          <span class="date">2022.01 — 2024.06 ·</span>
+          <span lang="en"> Graduate research assistant on the <strong>National Key R&amp;D Project (2020YFB1313604)</strong>. Worked on motion-trend-aware drone object detection and ByteTrack-based pedestrian tracking.</span>
+          <span lang="zh"> <strong>国家重点研发计划项目（2020YFB1313604）</strong>研究生助理，负责无人机视角下的运动趋势增强检测以及基于 ByteTrack 的行人多目标跟踪研究。</span>
+          <span lang="jp"> <strong>国家重点研究開発プロジェクト（2020YFB1313604）</strong>の研究助手として、ドローン視点での運動傾向強化検出および ByteTrack ベースの歩行者追跡を担当。</span>
+        </li>
+        <li>
+          <span class="date">2021.06 — 2023.03 ·</span>
+          <span lang="en"> Graduate research assistant on <strong>NSFC Project U181320052</strong> &mdash; <em>“Key Technologies for Autonomous Interior Decoration Robots”</em>. Designed a CycleGAN-based filtering network to enhance detection of small targets, and led equipment procurement &amp; paper writing.</span>
+          <span lang="zh"> <strong>国家自然科学基金项目 U181320052</strong> — <em>《面向室内装修机器人的自主作业关键技术》</em> 研究生助理。提出基于 CycleGAN 的过滤网络以提升小目标检测性能，同时负责实验设备采购与论文撰写。</span>
+          <span lang="jp"> <strong>国家自然科学基金プロジェクト U181320052</strong> — <em>「室内装飾ロボットの自律作業コア技術」</em> の研究助手。CycleGAN ベースのフィルタリングネットワークを設計し、小物体検出性能を向上させるとともに、実験機器の調達および論文執筆を担当。</span>
+        </li>
+        <li>
+          <span class="date">2023.04 ·</span>
+          <span lang="en"> Presented at the <strong>3rd International Conference on Computer Communication and Artificial Intelligence (CCAI 2023)</strong>.</span>
+          <span lang="zh"> 受邀参加<strong>第三届计算机通信与人工智能国际会议（CCAI 2023）</strong>并报告。</span>
+          <span lang="jp"> <strong>第3回コンピュータ通信・人工知能国際会議（CCAI 2023）</strong>にて発表。</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Awards -->
+    <section id="awards">
+      <h2 class="sec-title"><span class="emoji">🏆</span> <span lang="en">Honors &amp; Awards</span><span lang="zh">荣誉与奖项</span><span lang="jp">受賞・栄誉</span></h2>
+      <ul class="bullet-list in" data-reveal="">
+        <li>
+          <span class="date">2023.09 ·</span>
+          <span lang="en"> <strong>Academic Scholarship</strong>, Qingdao University.</span>
+          <span lang="zh"> <strong>青岛大学学业奖学金</strong>。</span>
+          <span lang="jp"> <strong>青島大学 学業奨学金</strong>。</span>
+        </li>
+        <li>
+          <span class="date">2021 — 2024 ·</span>
+          <span lang="en"> Participant, <strong>National Key R&amp;D Project</strong> (Grant No. 2020YFB1313604), Ministry of Science and Technology of China.</span>
+          <span lang="zh"> <strong>国家重点研发计划项目</strong>（编号 2020YFB1313604）课题参与人。</span>
+          <span lang="jp"> <strong>国家重点研究開発プロジェクト</strong>（番号 2020YFB1313604）参加メンバー。</span>
+        </li>
+        <li>
+          <span class="date">2025.04 — 2028.03 ·</span>
+          <span lang="en"> <strong>JST SPRING / BOOST Fellowship</strong> — Next-Generation Researcher / Next-Generation AI Talent Development Program, awarded by the <a href="https://www.jst.go.jp/" target="_blank" rel="noopener">Japan Science and Technology Agency (JST)</a> through the University of Tsukuba Graduate School of Science and Technology. Research topic: <em>Biomedical Information Analysis Based on Large Language Models</em>.</span>
+          <span lang="zh"> <strong>JST SPRING / BOOST 奖学金</strong> — 由日本<a href="https://www.jst.go.jp/" target="_blank" rel="noopener">科学技术振兴机构（JST）</a>设立的"次世代研究者挑战项目 / 次世代 AI 人才育成项目"，经筑波大学理工情報生命学術院推荐获得。研究课题：<em>基于大语言模型的生物医学信息分析</em>。</span>
+          <span lang="jp"> <strong>JST SPRING / BOOST フェローシップ</strong> — <a href="https://www.jst.go.jp/" target="_blank" rel="noopener">科学技術振興機構（JST）</a>による「次世代研究者挑戦的研究プログラム／次世代 AI 人材育成プログラム」に、筑波大学理工情報生命学術院より採択。研究テーマ：<em>大規模言語モデルを用いた生物医学情報解析</em>。</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="colofon">© 2026 Wu Hao · 吴昊 · 呉昊 · <a href="https://hbhggh.github.io">hbhggh.github.io</a></div>
+</footer>
+
+<!-- Lightbox for paper-cover zoom -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden="">
+  <div class="lightbox-stage">
+    <div class="lightbox-canvas" id="lightbox-canvas"></div>
+    <div class="lightbox-bar">
+      <div class="lightbox-caption" id="lightbox-title"></div>
+      <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">Close · Esc</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+
+  // Theme
+  const themeBtn = document.getElementById('themeToggle');
+  const sun = document.getElementById('iconSun');
+  const moon = document.getElementById('iconMoon');
+  const applyTheme = (t) => {
+    root.dataset.theme = t;
+    sun.style.display = t === 'light' ? '' : 'none';
+    moon.style.display = t === 'dark' ? '' : 'none';
+    try { localStorage.setItem('wh-theme', t); } catch(e) {}
+  };
+  applyTheme((() => { try { return localStorage.getItem('wh-theme') || 'light'; } catch(e) { return 'light'; } })());
+  themeBtn.addEventListener('click', () => applyTheme(root.dataset.theme === 'light' ? 'dark' : 'light'));
+
+  // Language (3-way switch)
+  const langButtons = document.querySelectorAll('.lang-switch button');
+  const applyLang = (l) => {
+    root.dataset.lang = l;
+    root.lang = l === 'zh' ? 'zh-CN' : (l === 'jp' ? 'ja' : 'en');
+    langButtons.forEach(b => b.classList.toggle('active', b.dataset.langSet === l));
+    document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = l === 'en' ? '' : 'none');
+    document.querySelectorAll('[lang="zh"]').forEach(el => el.style.display = l === 'zh' ? '' : 'none');
+    document.querySelectorAll('[lang="jp"]').forEach(el => el.style.display = l === 'jp' ? '' : 'none');
+    try { localStorage.setItem('wh-lang', l); } catch(e) {}
+  };
+  applyLang((() => { try { return localStorage.getItem('wh-lang') || 'zh'; } catch(e) { return 'zh'; } })());
+  langButtons.forEach(b => b.addEventListener('click', () => applyLang(b.dataset.langSet)));
+
+  // Sticky nav border
+  const topnav = document.getElementById('topnav');
+  const onScroll = () => topnav.classList.toggle('scrolled', window.scrollY > 6);
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Scroll-spy
+  const sections = ['top','about','news','publications','education','experience','awards']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  const navAnchors = document.querySelectorAll('.topnav a.nav-link');
+  const setActive = () => {
+    const y = window.scrollY + 120;
+    let cur = 'top';
+    sections.forEach(s => { if (s.offsetTop <= y) cur = s.id; });
+    navAnchors.forEach(a => a.classList.toggle('active', a.dataset.section === cur));
+  };
+  document.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  // Reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // ----- Cover lightbox -----
+  (function () {
+    const lb = document.getElementById('lightbox');
+    const canvas = document.getElementById('lightbox-canvas');
+    const titleEl = document.getElementById('lightbox-title');
+    const closeBtn = document.getElementById('lightbox-close');
+    if (!lb || !canvas) return;
+
+    const langOf = () => document.documentElement.lang || 'en';
+    const pickLang = (el) => {
+      if (!el) return '';
+      const cur = langOf();
+      const match = el.querySelector('[lang="' + cur + '"]');
+      return (match || el).textContent.trim();
+    };
+
+    const open = (figEl) => {
+      // Pull caption from sibling .pub-body h3 (current language)
+      const pub = figEl.closest('.pub');
+      const h3Wrap = pub ? pub.querySelector('.pub-body') : null;
+      const titleNode = h3Wrap ? h3Wrap.querySelectorAll('h3') : [];
+      let titleText = '';
+      titleNode.forEach(n => { if (n.lang === langOf()) titleText = n.textContent.trim(); });
+      if (!titleText && titleNode[0]) titleText = titleNode[0].textContent.trim();
+      const labelText = (figEl.querySelector('.label') || {}).textContent || '';
+
+      titleEl.innerHTML = '';
+      if (labelText) {
+        const tag = document.createElement('strong');
+        tag.textContent = labelText.trim();
+        titleEl.appendChild(tag);
+        titleEl.appendChild(document.createTextNode(' \u2022 '));
+      }
+      titleEl.appendChild(document.createTextNode(titleText));
+
+      // Clone the cover content (svg or img) into the canvas
+      canvas.innerHTML = '';
+      const inner = figEl.querySelector('svg, img.pub-cover');
+      if (inner) {
+        const clone = inner.cloneNode(true);
+        // Strip width/height attrs so CSS can scale it up
+        clone.removeAttribute('width');
+        clone.removeAttribute('height');
+        clone.style.width = '100%';
+        clone.style.height = '100%';
+        if (clone.tagName.toLowerCase() === 'svg') {
+          clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        }
+        canvas.appendChild(clone);
+      }
+      lb.hidden = false;
+      // next frame for transition
+      requestAnimationFrame(() => lb.classList.add('open'));
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lb.hidden = true; canvas.innerHTML = ''; }, 220);
+    };
+
+    document.querySelectorAll('.pub-fig').forEach(fig => {
+      fig.setAttribute('role', 'button');
+      fig.setAttribute('tabindex', '0');
+      fig.setAttribute('aria-label', 'Enlarge cover');
+      fig.addEventListener('click', () => open(fig));
+      fig.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(fig); }
+      });
+    });
+
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lb.classList.contains('open')) close();
+    });
+  })();
+</script>
+
+
+
+</body></html>
